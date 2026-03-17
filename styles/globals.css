@@ -1,26 +1,122 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold: #C89B0E;
+  --gold-light: #E8B520;
+  --dark-brown: #1E1A0C;
+  --black: #060606;
+  --charcoal: #2E2E2E;
+  --off-white: #F2EFE4;
+  --white: #FFFFFF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Barlow', sans-serif;
+  background: var(--black);
+  color: var(--off-white);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  color: var(--off-white);
+  margin-bottom: 1rem;
+}
+
+.section-title .accent {
+  color: var(--gold);
+}
+
+.section-desc {
+  color: rgba(242, 239, 228, 0.55);
+  max-width: 560px;
+  line-height: 1.8;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--black);
+  padding: 0.85rem 2.2rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--off-white);
+  padding: 0.85rem 2.2rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid rgba(242, 239, 228, 0.3);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  z-index: 200;
+  transition: width 0.1s;
 }
